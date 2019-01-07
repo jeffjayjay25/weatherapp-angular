@@ -1,0 +1,240 @@
+/* Application-wide Styles */
+ /* body{
+  background-image: url('sky.jpg');
+  background-size: cover;
+} */
+.head{
+  color:black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+  font-family: Times, serif;
+  text-align: center;
+}
+.btn{
+ background-color:#05416C;
+ color: rgb(253, 253, 253);
+ border-radius: 22px 22px 22px 22px;
+ -moz-border-radius: 22px 22px 22px 22px;
+ -webkit-border-radius: 22px 22px 22px 22px;
+}
+.input[type=text] {
+border-radius: 22px 22px 22px 22px;
+-moz-border-radius: 22px 22px 22px 22px;
+-webkit-border-radius: 22px 22px 22px 22px;
+    transition: ease-in-out,
+    width .35s ease-in-out;
+}
+.card7 {
+  /* box-shadow: 0 4px 8px 0 rgba(3, 19, 236, 0.877); */
+  /* background-color: rgba(137, 43, 226, 0.623); */
+  background-color: 	#195996f5;
+  transition: 0.3s;
+  width: 80%;
+  border-radius: 20px 20px 20px 20px;
+-moz-border-radius: 20px 20px 20px 20px;
+-webkit-border-radius: 20px 20px 20px 20px;
+border: 0px solid #000000;
+}
+.card2 {
+  /* box-shadow: 0 4px 8px 0 rgba(3, 236, 127, 0.986); */
+  background-color: 	#195996f5;
+  transition: 0.3s;
+  border-color: black;
+
+  
+  border-radius: 20px 20px 20px 20px;
+-moz-border-radius: 20px 20px 20px 20px;
+-webkit-border-radius: 20px 20px 20px 20px;
+border: 0px solid #000000;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.err{
+  color: red;
+  font-size: 250%;
+}
+
+.forecast {
+  border-style: 1px solid #05416C;
+  border-width: medium;
+  float: left;
+  margin-right: 10px;
+  width: 15%;
+  height: 100px;
+}
+
+.style{
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: Times, serif;
+}
+.column {
+  float: left;
+  width: 40%;
+  padding: 10px;
+}
+.column2 {
+  float: left;
+  width: 60%;
+  padding: 10px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  overflow: auto;
+}
+
+.isbn-col {
+  flex: 0 0 100px !important;
+  white-space: unset !important;
+}
+
+.button-row {
+  margin: 10px 0;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+* {
+  box-sizing: border-box;
+}
+mat-card
+mat-form-field,
+textarea{
+  width: 50%;
+}
+.post{
+  margin-top: 300px;
+}
+main{
+  width: 30%;
+
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.dots {
+  background:
+    radial-gradient 20%, transparent 19%,
+    radial-gradient 20%, transparent 19%,
+    transparent;
+  background-size: 6px 6px;
+  background-position: 0 0, 3px 3px;
+}
+
+
+.card {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  display: grid;
+  font-family: 'Trebuchet MS', sans-serif;
+  height: 200px;
+  margin: 20px auto;
+  width: 350px;
+}
+.btn:hover,
+.btn:focus {
+  color: red;
+  border-color: currentColor;
+  background-color: white;
+}
+.btn {
+  /* ... */
+  /* all browsers: remove the default outline since
+      we are rolling our own focus styles */
+  outline: none;
+  size: 100px;
+  align: center;
+}
+
+/* Firefox: removes the inner border shown on focus */
+.btn::-moz-focus-inner {
+  border: none;
+}
+
+.front {
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+  .blue {
+    background-color: blue;
+    grid-column: 8 / span 5;
+    grid-row: 1 / span 3;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  
+
+  .yellow {
+    background-color: #f1ef1c;
+    grid-column: 1 / span 7;
+    grid-row: 1 / span 4;
+  }
+
+  .pink {
+    background-color: pink;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    grid-row: 1 / span 3;
+    grid-column: 1 / span 11;
+    position: relative;
+    z-index: 2;
+  }
+
+  .dots {
+    grid-column: 1 / span 12;
+    grid-row: 3 / span 2;
+    margin: 0 0 15px 20px;
+    z-index: 1;
+  }
+
+  .personal-intro {
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    grid-column: 4 / span 6;
+    grid-row: 2 / span 2;
+    justify-content: center;
+    text-align: center;
+    z-index: 3;
+}
+  .top.dots {
+    grid-column: 8 / span 6;
+    grid-row: 2 / span 3;
+  }
+  
+  .personal-info {
+    grid-column: 2 / span 6;
+    grid-row: 5 / span 6;
+  }
+   .bottom.dots {
+    grid-column: 1 / span 8;
+    grid-row: 11 / span 2;
+    z-index: 2;
+  }
+  
+  .pink {
+    grid-column: 8 / span 5;
+    grid-row: 10 / span 3;
+  }
+  .addcard{
+    align-items: center;
+  }

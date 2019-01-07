@@ -1,0 +1,107 @@
+
+<div style="margin-bottom:30px;">
+    <span>
+        <input type="text" placeholder="enter city name"  [(ngModel)]="city" class="input">
+         <button (click)="searchCity()" class="btn">search place</button>
+      </span>
+    </div>
+    <span class="head">{{ this.city | uppercase }}</span>
+    <div class="row">
+    <div class="column" >
+        <h1>DAILY FORECAST</h1>
+    <div class="card7"> 
+        <div *ngIf="error" class="err">
+            {{ error.error.message | uppercase }}
+         </div>
+        <div *ngIf="!error"> 
+  <div style="color:aliceblue"><span><img src='http://openweathermap.org/img/w/{{this.icon}}.png'></span> </div>
+  <div style="color:aliceblue"><span> look at the sky you will see : </span>{{ this.weather }}</div><br><br>
+  <div style="color:aliceblue"><span>weather temperature is :</span>{{ this.temp | roundTemperature }}&deg; C</div><br>
+  <div style="color:aliceblue"><span> weather humidity is :</span>{{ this.humidity}}</div><br><br>
+  <div style="color:aliceblue"><span> atmospheric presure is :</span>{{ this.pressure}}</div><br><br>
+  <div style="color:aliceblue"><span> what you should wear:</span>{{ this.suggestion }}</div><br><br>
+  </div>
+ </div>
+</div>
+
+<div class="column2" >
+        <h1>FIVE-DAY FORECAST</h1>
+            <div *ngIf="error" class="err">
+               {{ error.error.message | uppercase }}
+            </div>
+  <div *ngIf="!error">
+  <div *ngIf="weatherForecast" class="row">
+  <div class="col-md-2">
+      
+  <div class="forecast" *ngFor="let day of weatherForecast">
+    
+      <div class="card2"> 
+              <!-- <pre>{{ weatherForecast | json }}</pre> -->
+  <img src='http://openweathermap.org/img/w/{{this.icon}}.png'><br>
+ <b><i> {{ day.dt_txt | date: 'EEEE' }}, <br>{{ day.dt_txt | date: 'shortTime'}},</i></b> <br>
+  <div style="color:aliceblue"><span>{{ day.weather[0].description | titlecase}}</span></div><br>
+  <!-- <span><p style="size: 20px ">font-min temp: </p>{{ day.main.temp_min | roundTemperature }}&deg;C</span><br> -->
+    <div style="color:aliceblue"><span><p style="size: 20px "> temp: </p>{{ day.main.temp | roundTemperature }}&deg;C</span></div><br>
+  <div style="color:aliceblue"><span><p style="size: 20px ">The wind speed is: </p>{{ day.wind.speed }}</span></div>
+              </div>
+    </div>
+          </div> 
+  </div>
+</div>
+</div>
+</div>
+    
+<div class="addcard" >
+  <h1>Enter mood and Activity</h1>
+    <div [hidden]="submitted">
+        <form #addMoodsactivityForm="ngForm">
+    
+        <div class="form-group">
+            <label for="mood">Mood :</label>
+            <input type="text" class="form-control" id="mood" placeholder="state your mood" 
+              [(ngModel)]="moodsactivity.mood" name="mood" #mood="ngModel">
+            <!-- <div [hidden]="mood.valid || mood.pristine"  class="alert alert-danger"   required>
+                {{ error }}
+            </div> -->
+        </div>
+        
+        <div class="form-group">
+            <label for="lastname">Activity</label>
+            <input type="text" class="form-control" id="activity" placeholder="Give your Activity"
+            [(ngModel)]="moodsactivity.activity" name="activity" #activity="ngModel" required>
+            <!-- <div [hidden]="activity.valid || activity.pristine"   class="alert alert-danger">
+            {{ error }}
+            </div> -->
+        </div> 
+        <div class="btn-group btn-group-sm">
+            <button type="button"   mat-raised-button 
+            color="primary"
+            type="submit" class="btn btn-dark" (click)="addMoodactivities()"
+                [disabled]="!addMoodsactivityForm.form.valid">Add</button>
+        </div>
+        </form>
+        <!-- <span class="badge badge-light"><br>your mood is:  {{moodsactivity.mood}} <br> your activity is:  {{moodsactivity.activity}} </span> -->
+    </div>
+    
+    <div [hidden]="!submitted">
+    <div>Submitted Successfully!</div> 
+        <div class="btn-group btn-group-sm">   
+            <button type="button" class="btn btn-dark" (click)=" newMoodsactivities(); addMoodsactivityForm.reset()">Continue</button>
+        </div>
+    </div>
+</div>
+<h1>your previous moods are:</h1>
+<div class="grid-container">
+        <ul *ngFor="let ma of moodactivitie">
+            <div class="card front">
+                    <div class="blue"></div>
+                    <div class="yellow"></div>
+                    <div class="personal-intro">
+            <li>mood:  {{ ma.activity }}  <br> activity:   {{ ma.mood }}</li>
+            
+        </div>
+        <button type="button" class="btn"  (click)="delete(ma)">Delete</button>
+        </div>
+        </ul>
+    </div>
+    

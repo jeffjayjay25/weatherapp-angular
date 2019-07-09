@@ -30,20 +30,29 @@
                {{ error.error.message | uppercase }}
             </div>
   <div *ngIf="!error">
-  <div *ngIf="weatherForecast" class="row">
-  <div class="col-md-2">
+  <div *ngIf="weatherForecast" >
+  
       
-  <div class="forecast" *ngFor="let day of weatherForecast">
+  <div class="column" *ngFor="let day of weatherForecast">
+        <div class="col-md-8">
+        <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                        <b><i> {{ day.dt_txt | date: 'EEEE' }}, <br>{{ day.dt_txt | date: 'shortTime'}},</i></b> <br>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ day.weather[0].description | titlecase}}</li>
+                  <li class="list-group-item">{{ day.main.temp | roundTemperature }}&deg;C</li>
+                  <li class="list-group-item"><span><p style="size: 20px ">The wind speed Will be: </p>{{ day.wind.speed }}</span></li>
+                </ul>
+              </div>
     
-      <div class="card2"> 
-              <!-- <pre>{{ weatherForecast | json }}</pre> -->
+      <!-- <div class="card2"> 
   <img src='http://openweathermap.org/img/w/{{this.icon}}.png'><br>
  <b><i> {{ day.dt_txt | date: 'EEEE' }}, <br>{{ day.dt_txt | date: 'shortTime'}},</i></b> <br>
   <div style="color:aliceblue"><span>{{ day.weather[0].description | titlecase}}</span></div><br>
-  <!-- <span><p style="size: 20px ">font-min temp: </p>{{ day.main.temp_min | roundTemperature }}&deg;C</span><br> -->
     <div style="color:aliceblue"><span><p style="size: 20px "> temp: </p>{{ day.main.temp | roundTemperature }}&deg;C</span></div><br>
   <div style="color:aliceblue"><span><p style="size: 20px ">The wind speed is: </p>{{ day.wind.speed }}</span></div>
-              </div>
+              </div> -->
     </div>
           </div> 
   </div>
@@ -52,43 +61,47 @@
 </div>
     
 <div class="addcard" >
-  <h1>Enter mood and Activity</h1>
-    <div [hidden]="submitted">
-        <form #addMoodsactivityForm="ngForm">
-    
-        <div class="form-group">
-            <label for="mood">Mood :</label>
-            <input type="text" class="form-control" id="mood" placeholder="state your mood" 
-              [(ngModel)]="moodsactivity.mood" name="mood" #mood="ngModel">
-            <!-- <div [hidden]="mood.valid || mood.pristine"  class="alert alert-danger"   required>
-                {{ error }}
-            </div> -->
-        </div>
-        
-        <div class="form-group">
-            <label for="lastname">Activity</label>
-            <input type="text" class="form-control" id="activity" placeholder="Give your Activity"
-            [(ngModel)]="moodsactivity.activity" name="activity" #activity="ngModel" required>
-            <!-- <div [hidden]="activity.valid || activity.pristine"   class="alert alert-danger">
-            {{ error }}
-            </div> -->
-        </div> 
-        <div class="btn-group btn-group-sm">
-            <button type="button"   mat-raised-button 
-            color="primary"
-            type="submit" class="btn btn-dark" (click)="addMoodactivities()"
-                [disabled]="!addMoodsactivityForm.form.valid">Add</button>
-        </div>
-        </form>
-        <!-- <span class="badge badge-light"><br>your mood is:  {{moodsactivity.mood}} <br> your activity is:  {{moodsactivity.activity}} </span> -->
-    </div>
-    
-    <div [hidden]="!submitted">
-    <div>Submitted Successfully!</div> 
-        <div class="btn-group btn-group-sm">   
-            <button type="button" class="btn btn-dark" (click)=" newMoodsactivities(); addMoodsactivityForm.reset()">Continue</button>
-        </div>
-    </div>
+        <div class="panel panel-primary">
+                <div class="panel-heading">Enter mood and Activity</div>
+                <div class="panel-body">
+                        <div [hidden]="submitted">
+                                <form #addMoodsactivityForm="ngForm">
+                            
+                                <div class="form-group">
+                                    <label for="mood">Mood :</label>
+                                    <input type="text" class="form-control" id="mood" placeholder="state your mood" 
+                                      [(ngModel)]="moodsactivity.mood" name="mood" #mood="ngModel">
+                                    <!-- <div [hidden]="mood.valid || mood.pristine"  class="alert alert-danger"   required>
+                                        {{ error }}
+                                    </div> -->
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="lastname">Activity</label>
+                                    <input type="text" class="form-control" id="activity" placeholder="Give your Activity"
+                                    [(ngModel)]="moodsactivity.activity" name="activity" #activity="ngModel" required>
+                                    <!-- <div [hidden]="activity.valid || activity.pristine"   class="alert alert-danger">
+                                    {{ error }}
+                                    </div> -->
+                                </div> 
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button"   mat-raised-button 
+                                    color="primary"
+                                    type="submit" class="btn btn-dark" (click)="addMoodactivities()"
+                                        [disabled]="!addMoodsactivityForm.form.valid">Add</button>
+                                </div>
+                                </form>
+                                <!-- <span class="badge badge-light"><br>your mood is:  {{moodsactivity.mood}} <br> your activity is:  {{moodsactivity.activity}} </span> -->
+                            </div>
+                            
+                            <div [hidden]="!submitted">
+                            <div>Submitted Successfully!</div> 
+                                <div class="btn-group btn-group-sm">   
+                                    <button type="button" class="btn btn-dark" (click)=" newMoodsactivities(); addMoodsactivityForm.reset()">Continue</button>
+                                </div>
+                            </div>
+                </div>
+              </div>
 </div>
 <h1>your previous moods are:</h1>
 <div class="grid-container">
@@ -97,11 +110,15 @@
                     <div class="blue"></div>
                     <div class="yellow"></div>
                     <div class="personal-intro">
-            <li>mood:  {{ ma.activity }}  <br> activity:   {{ ma.mood }}</li>
+            <li>mood:  {{ ma.activity }} &nbsp; &nbsp;   activity:   {{ ma.mood }}</li>
+            <li>city selected:  {{ ma.city }} &nbsp; &nbsp; <br/>  temp was:  {{ ma.tempe }}</li>
+            <li>weather was:  {{ ma.weathere }}&nbsp; &nbsp;   <br> activity:   {{ ma.mood }}</li>
             
         </div>
         <button type="button" class="btn"  (click)="delete(ma)">Delete</button>
+        <button type="button" class="btn"  (click)="print(ma)">Print</button>
         </div>
         </ul>
     </div>
+    
     

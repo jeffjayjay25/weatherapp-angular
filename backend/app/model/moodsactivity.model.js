@@ -1,22 +1,26 @@
 module.exports = (sequelize, Sequelize) => {
 	const Moodsactivity = sequelize.define('moodsactivity', {
-	  mood: {
+		mood: {
 			type: Sequelize.STRING
-	  },
-	  activity: {
+		},
+		activity: {
 			type: Sequelize.STRING
-	  },
+		},
 		city: {
-	  	    type: Sequelize.STRING
+			type: Sequelize.STRING
 		},
 
-		weathere:{
-            type: Sequelize.STRING
+		weathere: {
+			type: Sequelize.STRING
 		},
 		tempe:
-			{
+		{
 			type: Sequelize.INTEGER
-			}
+		},
+		forecast:
+		{
+			type: Sequelize.STRING
+		}
 		,
 
 	});
